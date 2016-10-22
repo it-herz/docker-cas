@@ -27,17 +27,14 @@
       </property>
     </bean>
 
-  <ldaptive:bind-search-authenticator id="authenticator"
+  <ldaptive:direct-authenticator id="authenticator"
         ldapUrl="${ldap.url}"
         baseDn="${ldap.baseDn}"
-        userFilter="${ldap.authn.searchFilter}"
-        bindDn="${ldap.managerDn}"
-        bindCredential="${ldap.managerPassword}"
+        format="${ldap.authn.searchFilter}"
         connectTimeout="${ldap.connectTimeout}"
         useStartTLS="${ldap.useStartTLS}"
         blockWaitTime="${ldap.pool.blockWaitTime}"
         maxPoolSize="${ldap.pool.maxSize}"
-        allowMultipleDns="${ldap.allowMultipleDns:false}"
         usePasswordPolicy="${ldap.usePpolicy:false}"
         minPoolSize="${ldap.pool.minSize}"
         validateOnCheckOut="${ldap.pool.validateOnCheckout}"
@@ -46,7 +43,6 @@
         idleTime="${ldap.pool.idleTime}"
         prunePeriod="${ldap.pool.prunePeriod}"
         failFastInitialize="true"
-        subtreeSearch="${ldap.subtree.search:true}"
         useSSL="${ldap.use.ssl:false}"
   />    
 </beans>
