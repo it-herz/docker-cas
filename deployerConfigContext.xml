@@ -23,6 +23,7 @@
           <value>displayName</value>
           <value>mail</value>
           <value>memberOf</value>
+        </list>
       </property>
     </bean>
 
