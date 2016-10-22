@@ -27,6 +27,6 @@ WORKDIR /cas-overlay
 
 RUN cd /cas-overlay && \
     sed -i 's~</dependencies>~<dependency><groupId>org.jasig.cas</groupId><artifactId>cas-server-support-ldap</artifactId><version>${cas.version}</version></dependency></dependencies>~ig' pom.xml && \
-    ./build.sh package
+    ./mvnw clean package -T 5
 
 CMD ["/opt/run.sh"]
