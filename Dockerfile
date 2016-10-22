@@ -24,8 +24,8 @@ WORKDIR /cas-overlay
 
 RUN sed -i 's~</dependencies>~<dependency><groupId>org.apereo.cas</groupId><artifactId>cas-server-support-ldap</artifactId><version>${cas.version}</version></dependency></dependencies>~ig' pom.xml
 
-ADD run /
+ADD run.sh /
 ADD deployerConfigContext.xml /cas-overlay/src/main/webapp/WEB-INF/classes/
 RUN cd /cas-overlay && ./build.sh package
 
-CMD ["/run"]
+CMD ["/run.sh"]
