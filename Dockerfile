@@ -4,12 +4,9 @@ MAINTAINER Dmitrii Zolotov <dzolotov@herzen.spb.ru>
 
 ENV DEBIAN_FRONTEND noninteractive
 
-COPY deployerConfigContext.xml /cas-overlay/src/main/webapp/WEB-INF/classes/
-
-COPY run.sh /opt/
-
 # Download the CAS overlay project
 RUN apt update -y && apt install -y maven git
+
 RUN cd / \
     && git clone -b 5.0 --single-branch https://github.com/apereo/cas-overlay-template.git cas-overlay \
     && cd cas-overlay \
@@ -19,6 +16,10 @@ RUN cd / \
     && mkdir -p src/main/webapp \
     && cp -R etc/* /etc/cas \
     && mkdir -p src/main/webapp/ && touch src/main/webapp/.donotdel
+
+COPY deployerConfigContext.xml /cas-overlay/src/main/webapp/WEB-INF/classes/
+
+COPY run.sh /opt/
 
 EXPOSE 8080 8443
 
