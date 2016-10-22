@@ -29,7 +29,6 @@
 
   <ldaptive:direct-authenticator id="authenticator"
         ldapUrl="${ldap.url}"
-        baseDn="${ldap.baseDn}"
         format="${ldap.authn.searchFilter}"
         connectTimeout="${ldap.connectTimeout}"
         useStartTLS="${ldap.useStartTLS}"
