@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 COPY deployerConfigContext.xml /cas-overlay/src/main/webapp/WEB-INF/classes/
 
-COPY run.sh /
+COPY run.sh /opt/
 
 # Download the CAS overlay project
 RUN apt update -y && apt install -y maven git
@@ -28,4 +28,4 @@ RUN cd /cas-overlay && \
     sed -i 's~</dependencies>~<dependency><groupId>org.apereo.cas</groupId><artifactId>cas-server-support-ldap</artifactId><version>${cas.version}</version></dependency></dependencies>~ig' pom.xml && \
     ./build.sh package
 
-CMD ["/run.sh"]
+CMD ["/opt/run.sh"]
