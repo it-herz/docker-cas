@@ -24,4 +24,4 @@ cp /cas.properties /etc/cas/cas/config/cas.properties
 cp /cas.properties /etc/cas/config/cas.properties
 
 cd /cas-overlay
-./build.sh run
+java -Xdebug runjdwp:transport=dt_socket,address=5000,server=y,suspend=n -jar target/cas.war 
