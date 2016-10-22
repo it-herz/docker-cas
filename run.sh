@@ -10,6 +10,7 @@ fi
 echo "cas.server.name: https://$FQDN:$PORT" >/cas.properties
 echo "cas.server.prefix: https://$FQDN:$PORT/cas" >>/cas.properties
 echo "cas.adminPagesSecurity.ip=`echo $ADMINIP | sed 's/\./\\\./ig'`" >>/cas.properties
+echo "host.name $FQDN" >>/cas.properties
 
 for A in `env`
 do
