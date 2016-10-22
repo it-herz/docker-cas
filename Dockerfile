@@ -8,7 +8,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt update -y && apt install -y maven git
 
 RUN cd / \
-    && git clone -b 5.0 --single-branch https://github.com/apereo/cas-overlay-template.git cas-overlay \
+    && git clone -b master --single-branch https://github.com/apereo/cas-overlay-template.git cas-overlay \
     && cd cas-overlay \
     && mkdir /etc/cas \
     && mkdir /etc/cas/jetty \
