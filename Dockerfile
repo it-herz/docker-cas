@@ -4,6 +4,10 @@ MAINTAINER Dmitrii Zolotov <dzolotov@herzen.spb.ru>
 
 ENV DEBIAN_FRONTEND noninteractive
 
+COPY deployerConfigContext.xml /cas-overlay/src/main/webapp/WEB-INF/classes/
+
+COPY run.sh /
+
 # Download the CAS overlay project
 RUN apt update -y && apt install -y maven git
 RUN cd / \
@@ -20,12 +24,8 @@ EXPOSE 8080 8443
 
 WORKDIR /cas-overlay
 
-#ADD thekeystore -> /etc/cas/jetty/
-
-RUN sed -i 's~</dependencies>~<dependency><groupId>org.apereo.cas</groupId><artifactId>cas-server-support-ldap</artifactId><version>${cas.version}</version></dependency></dependencies>~ig' pom.xml
-
-ADD run.sh /
-ADD deployerConfigContext.xml /cas-overlay/src/main/webapp/WEB-INF/classes/
-RUN cd /cas-overlay && ./build.sh package
+RUN cd /cas-overlay && \
+    sed -i 's~</dependencies>~<dependency><groupId>org.apereo.cas</groupId><artifactId>cas-server-support-ldap</artifactId><version>${cas.version}</version></dependency></dependencies>~ig' pom.xml && \
+    ./build.sh package
 
 CMD ["/run.sh"]
