@@ -2,7 +2,7 @@
 
 if [ ! -f /etc/cas/jetty/thekeystore ]
 then
-  openssl pkcs12 -export -in /etc/ssl/fullchain.pem -inkey /etc/ssl/privkey.pem -out /etc/ssl/all.p12 -name tomcat -CAfile /etc/chain.pem -caname root -password pass:export
+  openssl pkcs12 -export -in /etc/ssl/fullchain.pem -inkey /etc/ssl/privkey.pem -out /etc/ssl/all.p12 -name tomcat -CAfile /etc/ssl/chain.pem -caname root -password pass:export
   keytool -importkeystore -srcstorepass export -deststorepass changeit -srckeystore /etc/ssl/all.p12 -srcstoretype PKCS12 -alias tomcat -keystore /etc/cas/jetty/thekeystore
   keytool -import -trustcacerts -alias root -deststorepass changeit -file /etc/ssl/chain.pem -noprompt -keystore /etc/cas/jetty/thekeystore
 fi
@@ -20,8 +20,9 @@ do
   fi
 done
 
-cp /cas.properties /etc/cas/cas/config/cas.properties
+mkdir -p /etc/cas/config
+cp /cas.properties /etc/cas/cas.properties
 cp /cas.properties /etc/cas/config/cas.properties
 
 cd /cas-overlay
-java -Xdebug runjdwp:transport=dt_socket,address=5000,server=y,suspend=n -jar target/cas.war 
+./mvnw jetty:run-forked
