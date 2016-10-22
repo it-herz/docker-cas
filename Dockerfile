@@ -26,7 +26,7 @@ EXPOSE 8080 8443
 WORKDIR /cas-overlay
 
 RUN cd /cas-overlay && \
-    sed -i 's~</dependencies>~<dependency><groupId>org.apereo.cas</groupId><artifactId>cas-server-support-ldap</artifactId><version>${cas.version}</version></dependency></dependencies>~ig' pom.xml && \
+    sed -i 's~</dependencies>~<dependency><groupId>org.jasig.cas</groupId><artifactId>cas-server-support-ldap</artifactId><version>${cas.version}</version></dependency></dependencies>~ig' pom.xml && \
     ./build.sh package
 
 CMD ["/opt/run.sh"]
