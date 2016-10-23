@@ -15,9 +15,9 @@ RUN cd / \
     && mkdir bin \
     && mkdir -p src/main/webapp \
     && cp -R etc/* /etc/cas \
-    && mkdir -p src/main/webapp/ && touch src/main/webapp/.donotdel && mkdir src/main/webapp/spring-configuration
+    && mkdir -p src/main/webapp/ && touch src/main/webapp/.donotdel && mkdir src/main/webapp/WEB-INF/spring-configuration
 
-COPY deployerConfigContext.xml /cas-overlay/src/main/webapp/spring-configuration
+COPY deployerConfigContext.xml /cas-overlay/src/main/webapp/WEB-INF/spring-configuration
 COPY deployerConfigContext.xml /cas-overlay/src/main/webapp/WEB-INF
 
 COPY run.sh /opt/
