@@ -10,7 +10,7 @@ fi
 echo "cas.server.name: https://$FQDN:$PORT" >/cas.properties
 echo "cas.server.prefix: https://$FQDN:$PORT/cas" >>/cas.properties
 echo "cas.adminPagesSecurity.ip=`echo $ADMINIP | sed 's/\./\\\./ig'`" >>/cas.properties
-echo "host.name $FQDN" >>/cas.properties
+echo "host.name=$FQDN" >>/cas.properties
 
 for A in `env`
 do
@@ -20,6 +20,7 @@ do
     echo "`echo $NAME | sed 's/LDAP_\(.*\)/ldap.\1/ig' | tr '_' '.'`=${!NAME}" >>/cas.properties
   fi
 done
+echo "" >>/cas/properties
 
 mkdir -p /etc/cas/config
 cp /cas.properties /etc/cas/cas.properties
