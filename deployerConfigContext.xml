@@ -93,7 +93,6 @@
         useStartTLS="${ldap.useStartTLS}"
         blockWaitTime="${ldap.pool.blockWaitTime}"
         maxPoolSize="${ldap.pool.maxSize}"
-        usePasswordPolicy="${ldap.usePpolicy:false}"
         minPoolSize="${ldap.pool.minSize}"
         validateOnCheckOut="${ldap.pool.validateOnCheckout}"
         validatePeriodically="${ldap.pool.validatePeriodically}"
