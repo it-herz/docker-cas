@@ -22,6 +22,9 @@ do
 done
 echo "" >>/cas/properties
 
+#patch for ldap bind dn
+sed -i 's/\$\{ldap.authn.searchFilter\}/$LDAP_authn_searchFilter/ig' /cas-overlay/src/main/webapp/WEB-INF/deployerConfigContext.xml
+
 mkdir -p /etc/cas/config
 cp /cas.properties /etc/cas/cas.properties
 cp /cas.properties /etc/cas/config/cas.properties
