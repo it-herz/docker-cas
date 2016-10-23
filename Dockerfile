@@ -17,7 +17,7 @@ RUN cd / \
     && cp -R etc/* /etc/cas \
     && mkdir -p src/main/webapp/ && touch src/main/webapp/.donotdel
 
-COPY deployerConfigContext.xml /cas-overlay/src/main/webapp/WEB-INF/spring-configuration
+COPY deployerConfigContext.xml /cas-overlay/src/main/webapp/WEB-INF/
 COPY propertyFileConfigurer.xml /cas-overlay/src/main/webapp/WEB-INF/spring-configuration
 
 COPY run.sh /opt/
